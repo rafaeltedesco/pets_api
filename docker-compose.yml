@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  api:
+    image: node:16
+    container_name: dogs_api
+    env_file:
+      - .env
+    ports:
+      - $API_PORT:$API_PORT
+    working_dir: /usr/dogs_api/
+    volumes:
+      - ./:/usr/dogs_api/
+    depends_on: 
+      - db
+    tty: true
+  db:
+    image: mysql:8
+    container_name: dogs_db
+    restart: always
+    ports:
+      - 3306:3306
+    env_file:
+      - .db_env
+    volumes:
+      - ./misc:/docker-entrypoint-initdb.d
