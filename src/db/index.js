@@ -8,8 +8,6 @@ const sqlConfig = {
   port: process.env.DB_PORT,
 }
 
-console.log(sqlConfig);
-
 const connection = mysql.createPool(sqlConfig);
 
 module.exports = connection;
