@@ -11,7 +11,6 @@ class DogDAO {
     const [dogs] = await this.connection.execute(
       `SELECT * FROM ${this.TABLENAME}`,
     );
-    console.log(dogs);
     return dogs.map((dog) => camelize(dog));
   }
 
